@@ -6,12 +6,18 @@ import java.awt.*;
 public class Calculator extends JFrame {
 
 
-    String string = "";
+    private String string ="";
     private char operator;
+    private String str1="";
+    private String str2="";
     private double num1;
     private double num2;
     private double res;
 
+    public void clear (){
+        num1=0;
+        num2=0;
+    }
     public void minus(double num1, double num2) {
         this.res = num1 - num2;
         System.out.println(this.res);
@@ -136,7 +142,7 @@ public class Calculator extends JFrame {
         equals.addActionListener((event) -> {
             System.out.println(string);
             calculator(string);
-            switch_Operator (operator);
+            switch_Operator(operator);
         });
     }
 
@@ -172,17 +178,18 @@ public class Calculator extends JFrame {
                 operator = arr[i];
 
                 for (int j = 0; j < i; j++) {
-                    num1 += arr[j];
+                    str1 += arr[j];
                 }
-                System.out.println(num1);
-                for (int k = i; k < string.length(); k++) {
-                    num2 += arr[k];
+                System.out.println(str1);
+                for (int k = i + 1; k < string.length(); k++) {
+                    str2 += arr[k];
                 }
-                System.out.println(num2);
+                System.out.println(str2);
 
             }
         }
-
+        num1 = Integer.parseInt(str1);
+        num2 = Integer.parseInt(str2);
         return operator;
     }
 
